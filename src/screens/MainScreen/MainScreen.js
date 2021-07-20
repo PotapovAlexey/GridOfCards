@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   SafeAreaView,
   Text,
@@ -14,34 +14,39 @@ import {observer} from 'mobx-react-lite';
 import Card from '../../components/Card/Card';
 const MainScreen = () => {
   const mobXState = state;
+  const [bacgroundColor, setBacgroundColor] = useState(false);
   useEffect(() => {
     mobXState.getCardsFromJsonServer();
   }, []);
   const onPicturePress = id => {
     mobXState.setPickedCards(id);
+    if(mobXState.cards.some(item=>item.id===id)){
+      setBacgroundColor(true) 
+    }
+   
   };
   console.log(mobXState.tappedCards);
-  // const showTappedCardsId = () => {
-  //   mobXState.tappedCards.map(item => Alert.alert(item));
-  // };
+  const showTappedCardsId = () => {
+    Alert.alert(`You tap ${mobXState.tappedCards.join()} `);
+  };
   return (
     <SafeAreaView style={styles.mainWrapper}>
-      <View>
-        <FlatList
-          data={mobXState.cards}
-          keyExtractor={item => item.id}
-          renderItem={({item}) => (
-            <Card
-              id={item.id}
-              url={item.imageUrl}
-              name={item.name}
-              onPress={onPicturePress}
-            />
-          )}
-        />
-      </View>
+      <FlatList
+        data={mobXState.cards}
+        keyExtractor={item => item.id}
+        numColumns={'3'}
+        renderItem={({item}) => (
+          <Card
+            id={item.id}
+            url={item.imageUrl}
+            name={item.name}
+            onPress={onPicturePress}
+            bacgroundColor={bacgroundColor}
+          />
+        )}
+      />
 
-      <Button title="Submit" />
+      <Button title="Submit" onPress={showTappedCardsId} />
     </SafeAreaView>
   );
 };
