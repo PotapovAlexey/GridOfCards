@@ -1,11 +1,11 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './styles';
 
-const Card = () => {
+const Card = ({id, url, name}) => {
   return (
-    <View style={styles.mainWrapper}>
-      <Text>Hello</Text>
+    <View style={styles.mainWrapper} id={id}>
+      <Image source={{uri: url}} style={styles.imageStyle} />
     </View>
   );
 };

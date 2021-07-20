@@ -1,5 +1,5 @@
 {
-"cards":[ 
+"arr":[ 
   {
 "id": 1,
 "name": "",
@@ -12,13 +12,13 @@
 {
   "id": 3,
   "name": "",
-  "imageUrl":"https://memepedia.ru/wp-content/uploads/2017/10/--5.jpg"
+  "imageUrl": "https://memepedia.ru/wp-content/uploads/2017/10/--5.jpg"
  },
 
 {
 "id": 4,
 "name": "",
-"imageUrl":"http://pipcat.ru/wp-content/uploads/2016/07/5-popular- flat-faced-cat-breeds-55460dd1f02401.jpg"
+"imageUrl": "http://pipcat.ru/wp-content/uploads/2016/07/5-popular-flat-faced-cat-breeds-55460dd1f02401.jpg"
 },
 
 {
@@ -36,7 +36,7 @@
 "id": 7,
 "name": "",
  "imageUrl": "https://www.animalfriends.co.uk/app/uploads/2016/10/27163820/iStock_86086153_MEDIUM1-e1477582806563.jpg" 
-},
+},           "https://www.animalfriends.co.uk/app/uploads/2016/10/27163820/iStock_86086153_MEDIUM1-e1477582806563.jpg"
 
 {
 "id": 8,
