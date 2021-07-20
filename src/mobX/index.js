@@ -2,14 +2,14 @@ import {makeAutoObservable, runInAction} from 'mobx';
 import axios from 'react-native-axios';
 class Store {
   cards = [];
-  pickedCard = [];
+  tappedCards = [];
   constructor() {
     makeAutoObservable(this);
   }
 
   async getCardsFromJsonServer() {
     await axios
-      .get('http://my-json-server.typicode.com/PotapovAlexey/GridOfCards/cards')
+      .get('http://my-json-server.typicode.com/PotapovAlexey/GridOfCards/arr')
       .then(response =>
         runInAction(() => {
           let res = response;
@@ -20,7 +20,9 @@ class Store {
   }
 
   setPickedCards(id) {
-    this.pickedCard.push(id);
+    if (this.tappedCards.some(tappedCards => tappedCards === id)) {
+      return;
+    } else this.cards.some(card => card.id === id && this.tappedCards.push(id));
   }
 }
 

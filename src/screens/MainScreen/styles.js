@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     // width: Dimensions.get('screen').width,
     // height: Dimensions.get('screen').height,
 
-    backgroundColor: 'grey',
+    backgroundColor: 'white',
     flex: 1,
   },
 });

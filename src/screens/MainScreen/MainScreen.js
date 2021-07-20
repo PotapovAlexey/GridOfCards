@@ -1,5 +1,13 @@
 import React, {useEffect} from 'react';
-import {SafeAreaView, Text, View, FlatList, Button, Image} from 'react-native';
+import {
+  SafeAreaView,
+  Text,
+  View,
+  FlatList,
+  Button,
+  Image,
+  Alert,
+} from 'react-native';
 import styles from './styles';
 import state from '../../mobX/index';
 import {observer} from 'mobx-react-lite';
@@ -9,7 +17,13 @@ const MainScreen = () => {
   useEffect(() => {
     mobXState.getCardsFromJsonServer();
   }, []);
-
+  const onPicturePress = id => {
+    mobXState.setPickedCards(id);
+  };
+  console.log(mobXState.tappedCards);
+  // const showTappedCardsId = () => {
+  //   mobXState.tappedCards.map(item => Alert.alert(item));
+  // };
   return (
     <SafeAreaView style={styles.mainWrapper}>
       <View>
@@ -17,7 +31,12 @@ const MainScreen = () => {
           data={mobXState.cards}
           keyExtractor={item => item.id}
           renderItem={({item}) => (
-            <Card id={item.id} url={item.imageUrl} name={item.name} />
+            <Card
+              id={item.id}
+              url={item.imageUrl}
+              name={item.name}
+              onPress={onPicturePress}
+            />
           )}
         />
       </View>

@@ -2,11 +2,14 @@ import React from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './styles';
 
-const Card = ({id, url, name}) => {
+const Card = ({id, url, name, onPress}) => {
   return (
-    <View style={styles.mainWrapper} id={id}>
+    <TouchableOpacity
+      style={styles.mainWrapper}
+      id={id}
+      onPress={() => onPress(id)}>
       <Image source={{uri: url}} style={styles.imageStyle} />
-    </View>
+    </TouchableOpacity>
   );
 };
 
