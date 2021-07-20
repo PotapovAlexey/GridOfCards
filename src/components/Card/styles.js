@@ -5,7 +5,10 @@ const styles = StyleSheet.create({
     // width: Dimensions.get('screen').width,
     // height: Dimensions.get('screen').height,
     flex:1,
-    marginHorizontal:10,
+    justifyContent:'center',
+    alignItems:'center',
+    marginHorizontal:3,
+    marginVertical:3,
     height: 150,
     width:150,
     backgroundColor:'white'
@@ -15,8 +18,12 @@ const styles = StyleSheet.create({
     // width: Dimensions.get('screen').width,
     // height: Dimensions.get('screen').height,
     flex:1,
-    marginHorizontal:10,
-    height: 150,
+    justifyContent:'center',
+    alignItems:'center',
+    marginHorizontal:3,
+    marginVertical:3,
+    height: 120,
+    width:150,
     backgroundColor:'black'
     
   },

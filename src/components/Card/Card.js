@@ -5,7 +5,7 @@ import styles from './styles';
 const Card = ({id, url, name, onPress,bacgroundColor}) => {
   return (
     <View style={bacgroundColor?styles.tapedMainWrapper:styles.mainWrapper} >
-      <Text>Тоша</Text>
+      {/* <Text>Тоша</Text> */}
       <TouchableOpacity
        
         id={id}
