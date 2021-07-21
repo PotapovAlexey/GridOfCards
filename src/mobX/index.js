@@ -3,6 +3,7 @@ import axios from 'react-native-axios';
 class Store {
   cards = [];
   tappedCards = [];
+  isActive = false;
   constructor() {
     makeAutoObservable(this);
   }
@@ -13,7 +14,8 @@ class Store {
       .then(response =>
         runInAction(() => {
           let res = response;
-          this.cards = [...res.data];
+          //this.cards = [...res.data];
+          this.cards = res.data.map(card => ({...card, status: false}));
         }),
       )
       .catch(error => console.log('ERROR', error));
@@ -21,8 +23,15 @@ class Store {
 
   setPickedCards(id) {
     if (this.tappedCards.some(tappedCards => tappedCards === id)) {
-      return;
-    } else this.cards.some(card => card.id === id && this.tappedCards.push(id));
+    } else {
+      this.tappedCards.push(id);
+    }
+    this.cards.some(card => {
+      if (card.id === id) {
+        card.status = !card.status;
+      }
+      this.isActive = !this.isActive;
+    });
   }
 }
 

@@ -1,13 +1,9 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  mainWrapper: {
-    width: Dimensions.get('screen').width,
-    // height: Dimensions.get('screen').height,
-    
+  mainScreenWrapper: {
     backgroundColor: 'white',
     flex: 1,
   },
-  
 });
 export default styles;

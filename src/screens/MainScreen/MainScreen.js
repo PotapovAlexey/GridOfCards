@@ -1,47 +1,36 @@
-import React, {useEffect, useState} from 'react';
-import {
-  SafeAreaView,
-  Text,
-  View,
-  FlatList,
-  Button,
-  Image,
-  Alert,
-} from 'react-native';
+import React, {useEffect} from 'react';
+import {SafeAreaView, FlatList, Button, Alert} from 'react-native';
 import styles from './styles';
 import state from '../../mobX/index';
 import {observer} from 'mobx-react-lite';
 import Card from '../../components/Card/Card';
+
 const MainScreen = () => {
   const mobXState = state;
-  const [bacgroundColor, setBacgroundColor] = useState(false);
+
   useEffect(() => {
     mobXState.getCardsFromJsonServer();
-  }, []);
+  }, [mobXState.isActive]);
+
   const onPicturePress = id => {
     mobXState.setPickedCards(id);
-    if(mobXState.cards.some(item=>item.id===id)){
-      setBacgroundColor(true) 
-    }
-   
   };
-  console.log(mobXState.tappedCards);
   const showTappedCardsId = () => {
-    Alert.alert(`You tap ${mobXState.tappedCards.join()} `);
+    Alert.alert(`You pressed on ${mobXState.tappedCards.join()} pictures`);
   };
   return (
-    <SafeAreaView style={styles.mainWrapper}>
+    <SafeAreaView style={styles.mainScreenWrapper}>
       <FlatList
         data={mobXState.cards}
         keyExtractor={item => item.id}
-        numColumns={'3'}
+        numColumns={'2'}
         renderItem={({item}) => (
           <Card
             id={item.id}
             url={item.imageUrl}
             name={item.name}
             onPress={onPicturePress}
-            bacgroundColor={bacgroundColor}
+            isTapped={item.status}
           />
         )}
       />
