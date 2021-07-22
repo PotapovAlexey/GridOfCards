@@ -1,5 +1,6 @@
 import {makeAutoObservable, runInAction} from 'mobx';
-import axios from 'react-native-axios';
+import axios from 'axios';
+
 class Store {
   cards = [];
   tappedCards = [];
