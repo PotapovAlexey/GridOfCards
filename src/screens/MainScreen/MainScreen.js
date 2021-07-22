@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {SafeAreaView, FlatList, Button, Alert, View} from 'react-native';
+import {SafeAreaView, FlatList, Button, Alert} from 'react-native';
 import styles from './styles';
 import state from '../../mobX/index';
 import {observer} from 'mobx-react-lite';
@@ -10,11 +10,9 @@ const MainScreen = () => {
 
   useEffect(() => {
     mobXState.getCardsFromJsonServer();
-    console.log('CONSOLE', mobXState.cards);
   }, [mobXState.isActive]);
-
   const onPicturePress = id => {
-    mobXState.setPickedCards(id);
+    mobXState.setTappedCards(id);
   };
   const showTappedCardsId = () => {
     Alert.alert(`You pressed on ${mobXState.tappedCards.join()} pictures`);

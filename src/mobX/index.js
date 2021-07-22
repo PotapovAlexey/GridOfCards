@@ -1,6 +1,5 @@
 import {makeAutoObservable, runInAction} from 'mobx';
 import axios from 'axios';
-
 class Store {
   cards = [];
   tappedCards = [];
@@ -14,15 +13,16 @@ class Store {
       .get('http://my-json-server.typicode.com/PotapovAlexey/GridOfCards/arr')
       .then(response =>
         runInAction(() => {
-          let res = response;
-          //this.cards = [...res.data];
-          this.cards = res.data.map(card => ({...card, status: false}));
+          this.cards = response.data.map(card => ({
+            ...card,
+            status: false,
+          }));
         }),
       )
       .catch(error => console.log('ERROR', error));
   }
 
-  setPickedCards(id) {
+  setTappedCards(id) {
     if (this.tappedCards.some(tappedCards => tappedCards === id)) {
     } else {
       this.tappedCards.push(id);
